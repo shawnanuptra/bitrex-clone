@@ -11,82 +11,77 @@ import {
 	SafetyMission,
 	WhatIsBitrex,
 } from "./constants";
+const HeaderWrapper = styled.header`
+	display: grid;
+	grid-template-columns:
+		minmax(0, 1fr) minmax(4rem, 8rem) minmax(5rem, 5rem) minmax(38.25rem, 80rem)
+		minmax(5rem, 5rem) minmax(4rem, 8rem) minmax(0, 1fr);
+	width: 100vw;
+	background-color: white;
+	color: black;
 
+	.header__inner {
+		display: flex;
+		grid-column: 3/6;
+		flex-grow: 1;
+		padding: 1rem 0;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.header__logo {
+		width: 6rem;
+	}
+
+	.nav__li {
+		font-size: 19px;
+		list-style-type: none;
+		margin-right: 1rem;
+	}
+
+	.nav__ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding-inline-start: 0;
+		margin: 0 auto 0 2rem;
+	}
+
+	.nav__cta {
+		background-color: #ed1c23;
+		transition: 0.3s;
+		&:hover {
+			background-color: #d3191f;
+			border-color: #d3191f;
+		}
+		color: white;
+		border-radius: 2rem;
+		font-size: 19px;
+		font-weight: 600;
+		padding: 1rem 1.15rem;
+	}
+
+	.nav__flag_container {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		place-items: center;
+		gap: 10px;
+	}
+
+	.group1 {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.group2 {
+		display: flex;
+		flex-direction: row;
+		gap: 15px;
+	}
+`;
 function Header() {
-	const HeaderWrapper = styled.header`
-		display: grid;
-		grid-template-columns:
-			minmax(0, 1fr) minmax(4rem, 8rem) minmax(5rem, 5rem) minmax(
-				38.25rem,
-				80rem
-			)
-			minmax(5rem, 5rem) minmax(4rem, 8rem) minmax(0, 1fr);
-		width: 100vw;
-		background-color: white;
-		color: black;
-
-		.header__inner {
-			display: flex;
-			grid-column: 3/6;
-			flex-grow: 1;
-			padding: 1rem 0;
-			align-items: center;
-			justify-content: space-between;
-		}
-
-		.header__logo {
-			width: 6rem;
-		}
-
-		.nav__li {
-			font-size: 19px;
-			list-style-type: none;
-			margin-right: 1rem;
-		}
-
-		.nav__ul {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			padding-inline-start: 0;
-			margin: 0 auto 0 2rem;
-		}
-
-		.nav__cta {
-			background-color: #ed1c23;
-			transition: 0.3s;
-			&:hover {
-				background-color: #d3191f;
-				border-color: #d3191f;
-			}
-			color: white;
-			border-radius: 2rem;
-			font-size: 19px;
-			font-weight: 600;
-			padding: 1rem 1.15rem;
-		}
-
-		.nav__flag_container {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			place-items: center;
-			gap: 10px;
-		}
-
-		.group1 {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-
-		.group2 {
-			display: flex;
-			flex-direction: row;
-			gap: 15px;
-		}
-	`;
-
 	return (
 		<HeaderWrapper>
 			<div className='header__inner'>
