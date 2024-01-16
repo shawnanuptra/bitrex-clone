@@ -48,6 +48,7 @@ function NavItem({ text, links }) {
 
 			<div className='dropdown'>
 				{
+					// TODO: add functionality for toggling drop down menu
 					// Dynamically produce links
 					Object.entries(links).map(([title, link]) => (
 						<a href={link}>{title}</a>
