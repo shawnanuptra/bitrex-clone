@@ -3,7 +3,6 @@ import styled from "styled-components";
 import logo from "../assets/Logo.webp";
 import enFlag from "../assets/en.webp";
 import arrow from "../assets/arrow.svg";
-import Arrow from "./Arrow";
 import NavItem from "./NavItem";
 import {
 	OurPartners,
@@ -11,6 +10,7 @@ import {
 	SafetyMission,
 	WhatIsBitrex,
 } from "./constants";
+
 const HeaderWrapper = styled.header`
 	display: grid;
 	grid-template-columns:
@@ -83,23 +83,39 @@ const HeaderWrapper = styled.header`
 `;
 function Header() {
 	return (
-		<HeaderWrapper>
+		<HeaderWrapper
+			onClick={() => {
+				// resetHeaderState();
+				console.log("test");
+			}}
+		>
 			<div className='header__inner'>
 				<div className='group1'>
 					<img className='header__logo' src={logo} />
 					<nav>
 						<ul className='nav__ul'>
 							<li className='nav__li'>
-								<NavItem text={"What is Bitrex"} links={WhatIsBitrex} key={0} />
+								<NavItem
+									text={"What is Bitrex"}
+									links={WhatIsBitrex}
+									key={0}
+									index={0}
+								/>
 							</li>
 							<li className='nav__li'>
-								<NavItem text={"Our Partners"} links={OurPartners} key={1} />
+								<NavItem
+									text={"Our Partners"}
+									links={OurPartners}
+									key={1}
+									index={1}
+								/>
 							</li>
 							<li className='nav__li'>
 								<NavItem
 									text={"Safety Mission"}
 									links={SafetyMission}
 									key={2}
+									index={2}
 								/>
 							</li>
 							<li className='nav__li'>
@@ -107,6 +123,7 @@ function Header() {
 									text={"Product Information"}
 									links={ProductInformation}
 									key={3}
+									index={3}
 								/>
 							</li>
 						</ul>
