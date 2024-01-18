@@ -36,14 +36,6 @@ const Wrapper = styled.div`
 	.dropdown > a:last-child {
 		margin: 1.25rem;
 	}
-
-	/* close/open modal */
-	.close {
-		display: block;
-	}
-	.open {
-		display: block;
-	}
 `;
 
 function NavItem({ text, links, index }) {

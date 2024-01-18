@@ -83,12 +83,7 @@ const HeaderWrapper = styled.header`
 `;
 function Header() {
 	return (
-		<HeaderWrapper
-			onClick={() => {
-				// resetHeaderState();
-				console.log("test");
-			}}
-		>
+		<HeaderWrapper>
 			<div className='header__inner'>
 				<div className='group1'>
 					<img className='header__logo' src={logo} />
