@@ -19,13 +19,16 @@ const HeroSection = styled.div`
 		display: flex;
 		flex-direction: column;
 		padding: 128px 0;
+		justify-content: center;
 	}
 
 	.hero__media {
 		justify-self: end;
 		width: 50%;
-		grid-column: 4/6;
+		grid-column: 3/6;
 		grid-row: 1/2;
+		height: 100%;
+		aspect-ratio: 1/1;
 	}
 
 	.hero__media_inner {
