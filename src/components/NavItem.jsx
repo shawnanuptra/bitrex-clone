@@ -1,7 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Arrow from "./Arrow";
 import styled from "styled-components";
-import { useHeaderContext } from "../Contexts";
 
 const Wrapper = styled.div`
 	margin-right: 1rem;
@@ -21,11 +20,18 @@ const Wrapper = styled.div`
 
 	.dropdown {
 		position: absolute;
+		top: 2.5rem;
 		z-index: 300;
 		background-color: #fbe4e4;
 		border-radius: 1rem;
 		overflow: visible;
 		width: auto;
+		transition: 0.1s ease;
+		opacity: 0;
+	}
+
+	.open {
+		opacity: 1;
 	}
 
 	.dropdown > a {
@@ -36,15 +42,24 @@ const Wrapper = styled.div`
 	.dropdown > a:last-child {
 		margin: 1.25rem;
 	}
+
+	.rotatable {
+		transition: transform 0.3s ease;
+		display: flex;
+		place-items: center;
+		justify-content: center;
+	}
+
+	.rotate {
+		transform: rotate(180deg);
+	}
 `;
 
 function NavItem({ text, links, index }) {
-	const { headerState, updateHeaderState } = useHeaderContext();
-
-	console.log(headerState);
-
 	const dropdownRef = useRef(null);
 	const wrapperRef = useRef(null);
+
+	const [navState, setNavState] = useState(false);
 
 	useEffect(() => {
 		const handleOutsideClick = (e) => {
@@ -55,8 +70,8 @@ function NavItem({ text, links, index }) {
 				dropdownRef.current &&
 				!dropdownRef.current.contains(e.target)
 			) {
-				// Close the dropdown by updating the header state
-				updateHeaderState(index, false);
+				// Close the dropdown
+				setNavState(false);
 			}
 		};
 
@@ -67,33 +82,33 @@ function NavItem({ text, links, index }) {
 		return () => {
 			document.removeEventListener("click", handleOutsideClick);
 		};
-	}, [index, updateHeaderState]);
+	}, [navState]);
 	return (
 		<Wrapper
 			ref={wrapperRef}
 			onClick={() => {
 				// toggle modal
-				updateHeaderState(index, !headerState[index]);
+				setNavState(!navState);
 			}}
 		>
 			<a href='#' key={index}>
 				{text}
-				<Arrow />
+				<div className={`rotatable ${navState ? "rotate" : ""}`}>
+					<Arrow />
+				</div>
 			</a>
 
 			{/* DROPDOWN */}
-			{headerState[index] && (
-				<div className='dropdown' ref={dropdownRef}>
-					{
-						// Dynamically produce links
-						Object.entries(links).map(([title, link]) => (
-							<a key={title} href={link}>
-								{title}
-							</a>
-						))
-					}
-				</div>
-			)}
+			<div className={`dropdown ${navState ? "open" : ""}`} ref={dropdownRef}>
+				{
+					// Dynamically produce links
+					Object.entries(links).map(([title, link]) => (
+						<a key={title} href={link}>
+							{title}
+						</a>
+					))
+				}
+			</div>
 		</Wrapper>
 	);
 }
