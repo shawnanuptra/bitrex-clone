@@ -16,7 +16,7 @@ const HeaderWrapper = styled.header`
 	grid-template-columns:
 		minmax(0, 1fr) minmax(4rem, 8rem) minmax(5rem, 5rem) minmax(38.25rem, 80rem)
 		minmax(5rem, 5rem) minmax(4rem, 8rem) minmax(0, 1fr);
-	width: 100vw;
+	width: 100%;
 	background-color: white;
 	color: black;
 
