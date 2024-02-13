@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import HeroImage from "./assets/Try-It-1536x1024.jpg";
 import TasteTestImage from "./assets/Taste-Test-Static.png";
 import RequestTasteTestBtn from "./components/RequestTasteTestBtn";
+import Footer from "./components/Footer";
 
 const HeroSection = styled.div`
 	width: 100%;
@@ -85,6 +86,7 @@ const HeroSection = styled.div`
 `;
 const TasteTestSection = styled.div`
 	background-color: white;
+	margin-bottom: 8rem;
 	color: black;
 	display: grid;
 	grid-template-columns:
@@ -250,6 +252,7 @@ function App() {
 					</div>
 				</TasteTestSection>
 			</main>
+			<Footer />
 		</>
 	);
 }
