@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/Logo.webp";
 import enFlag from "../assets/en.webp";
@@ -19,6 +19,9 @@ const HeaderWrapper = styled.header`
 	width: 100%;
 	background-color: white;
 	color: black;
+	position: sticky;
+	top: ${({ isSticky }) => (isSticky ? "0" : "-150px")};
+	transition: top 0.5s;
 
 	.header__inner {
 		display: flex;
@@ -82,8 +85,30 @@ const HeaderWrapper = styled.header`
 	}
 `;
 function Header() {
+	const [isSticky, setIsSticky] = useState(true);
+	const [lastScrollTop, setLastScrollTop] = useState(0);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currScroll = window.scrollY;
+			if (currScroll > lastScrollTop) {
+				// scroll down, dont show header
+				setIsSticky(false);
+			} else {
+				// scroll up, show header
+				setIsSticky(true);
+			}
+
+			//remember last scroll position
+			setLastScrollTop(currScroll <= 0 ? 0 : currScroll);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [lastScrollTop]);
+
 	return (
-		<HeaderWrapper>
+		<HeaderWrapper isSticky={isSticky}>
 			<div className='header__inner'>
 				<div className='group1'>
 					<img className='header__logo' src={logo} />
