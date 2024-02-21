@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import BigArrow from "./BigArrow";
+import BigArrow from "./micro-components/BigArrow";
 
 const Wrapper = styled.a`
 	display: flex;

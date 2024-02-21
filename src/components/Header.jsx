@@ -9,7 +9,7 @@ import {
 	ProductInformation,
 	SafetyMission,
 	WhatIsBitrex,
-} from "./constants";
+} from "../utility/constants";
 
 const HeaderWrapper = styled.header`
 	display: grid;

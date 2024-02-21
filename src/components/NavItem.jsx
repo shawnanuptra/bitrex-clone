@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import Arrow from "./Arrow";
+import Arrow from "./micro-components/Arrow";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

@@ -1,8 +1,8 @@
 import React from "react";
 import VeranovaLogo from "../assets/veranova-2-22.webp";
 import styled from "styled-components";
-import TwitterIcon from "./TwitterIcon";
-import FacebookIcon from "./FacebookIcon";
+import TwitterIcon from "./micro-components/TwitterIcon";
+import FacebookIcon from "./micro-components/FacebookIcon";
 
 const Wrapper = styled.div`
 	display: grid;
