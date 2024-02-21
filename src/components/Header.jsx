@@ -87,24 +87,37 @@ const HeaderWrapper = styled.header`
 function Header() {
 	const [isSticky, setIsSticky] = useState(true);
 	const [lastScrollTop, setLastScrollTop] = useState(0);
+	const [lastScrollDown, setLastScrollDown] = useState(true); // remembers previous scroll is down
 
 	useEffect(() => {
-		const handleScroll = () => {
+		const handleScrollEnd = () => {
 			const currScroll = window.scrollY;
 			if (currScroll > lastScrollTop) {
 				// scroll down, dont show header
-				setIsSticky(false);
+				if (lastScrollDown) {
+					setIsSticky(false);
+					console.log("set sticky false");
+				} else {
+					setLastScrollDown(true);
+					console.log("set last scroll down truye");
+				}
 			} else {
 				// scroll up, show header
-				setIsSticky(true);
+				if (lastScrollDown) {
+					setLastScrollDown(false);
+					console.log("set last scr down false");
+				} else {
+					setIsSticky(true);
+					console.log("set sticky true");
+				}
 			}
 
 			//remember last scroll position
 			setLastScrollTop(currScroll <= 0 ? 0 : currScroll);
 		};
 
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
+		window.addEventListener("scrollend", handleScrollEnd);
+		return () => window.removeEventListener("scrollend", handleScrollEnd);
 	}, [lastScrollTop]);
 
 	return (
