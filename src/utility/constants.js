@@ -22,3 +22,7 @@ export const ProductInformation = {
     "Bitrex Product List": "https://www.bitrex.com/bitrex-product-list",
     "Global Regulations": "https://www.bitrex.com/global-regulations"
 }
+
+export const size = {
+    headerMobile: '(max-width: 800px)'
+}
