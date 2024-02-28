@@ -95,6 +95,9 @@ const HeaderWrapper = styled.header`
 		grid-auto-flow: row;
 		grid-auto-rows: auto;
 		grid-template-columns: 0 2rem 2rem minmax(0, 1fr) 2rem 2rem 0;
+		background-color: ${({ isHeaderActive }) =>
+			isHeaderActive ? "#ed1c23" : "white"};
+
 		.header__inner {
 			display: flex;
 			grid-column: 3/6;
@@ -115,11 +118,6 @@ const HeaderWrapper = styled.header`
 
 		.nav__ul {
 			display: none;
-			/* display: flex;
-			flex-direction: row;
-			justify-content: center;
-			padding-inline-start: 0;
-			margin: 0 auto 0 2rem; */
 		}
 
 		.nav__cta {
@@ -130,7 +128,9 @@ const HeaderWrapper = styled.header`
 			font-size: 19px;
 			font-weight: 600;
 			padding: 1rem 1.15rem;
-			border: 0.125em solid #ed1c23;
+			top: ${({ isSticky }) => (isSticky ? "0" : "-150px")};
+			border: ${({ isHeaderActive }) =>
+				isHeaderActive ? "0.125em solid white" : "0.125em solid transparent"};
 		}
 
 		.nav__flag_container {
@@ -276,7 +276,7 @@ function Header() {
 	}, [lastScrollTop]);
 
 	return (
-		<HeaderWrapper isSticky={isSticky}>
+		<HeaderWrapper isSticky={isSticky} isHeaderActive={isHeaderActive}>
 			<div className='header__inner'>
 				<div className='group1'>
 					<img className='header__logo' src={logo} />

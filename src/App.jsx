@@ -179,7 +179,7 @@ function App() {
 	return (
 		<>
 			<Header />
-			<main>
+			{/* <main>
 				<HeroSection>
 					<div className='hero__content'>
 						<h1>
@@ -252,7 +252,7 @@ function App() {
 					</div>
 				</TasteTestSection>
 			</main>
-			<Footer />
+			<Footer /> */}
 		</>
 	);
 }
