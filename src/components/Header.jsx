@@ -17,7 +17,7 @@ const HeaderWrapper = styled.header`
 	grid-template-columns:
 		minmax(0, 1fr) minmax(4rem, 8rem) minmax(5rem, 5rem) minmax(38.25rem, 80rem)
 		minmax(5rem, 5rem) minmax(4rem, 8rem) minmax(0, 1fr);
-	width: 100%;
+	width: 100vw;
 	background-color: white;
 	color: black;
 	position: sticky;
@@ -25,18 +25,35 @@ const HeaderWrapper = styled.header`
 	transition: top 0.5s;
 
 	.header__inner {
+		width: 100%;
 		display: flex;
 		grid-column: 3/6;
-		flex-grow: 1;
 		padding: 1rem 0;
 		align-items: center;
-		justify-content: space-between;
 	}
 
 	.header__logo {
 		width: 6rem;
+		height: 6rem;
+		order: 1;
+		position: relative;
+	}
+	.header__logo_image {
+		width: 6rem;
+		height: auto;
+		position: absolute;
+		left: 0;
+		object-fit: contain;
+		object-position: left center;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
+	.header__nav {
+		order: 2;
+		position: relative;
+		margin: 0 auto 0 0;
+	}
 	.nav__li {
 		font-size: 19px;
 		list-style-type: none;
@@ -52,6 +69,8 @@ const HeaderWrapper = styled.header`
 	}
 
 	.nav__cta {
+		justify-content: end;
+		order: 4;
 		background-color: #ed1c23;
 		transition: 0.3s;
 		&:hover {
@@ -66,14 +85,17 @@ const HeaderWrapper = styled.header`
 	}
 
 	.nav__flag_container {
+		order: 3;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
 		place-items: center;
 		gap: 10px;
+		margin: 0 1rem 0 auto;
+		cursor: pointer;
 	}
 
-	.group1 {
+	/* .group1 {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -83,7 +105,7 @@ const HeaderWrapper = styled.header`
 		display: flex;
 		flex-direction: row;
 		gap: 15px;
-	}
+	} */
 
 	.nav__hamburger {
 		display: none;
@@ -108,6 +130,7 @@ const HeaderWrapper = styled.header`
 
 		.header__logo {
 			width: 6rem;
+			/* order: 0; */
 		}
 
 		.nav__li {
@@ -121,6 +144,7 @@ const HeaderWrapper = styled.header`
 		}
 
 		.nav__cta {
+			/* order: 2; */
 			background-color: #ed1c23;
 			transition: 0.3s;
 			color: white;
@@ -135,19 +159,6 @@ const HeaderWrapper = styled.header`
 
 		.nav__flag_container {
 			display: none;
-		}
-
-		.group1 {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-
-		.group2 {
-			display: flex;
-			flex-direction: row;
-			gap: 15px;
-			align-items: center;
 		}
 
 		// HAMBURGER
@@ -278,58 +289,55 @@ function Header() {
 	return (
 		<HeaderWrapper isSticky={isSticky} isHeaderActive={isHeaderActive}>
 			<div className='header__inner'>
-				<div className='group1'>
-					<img className='header__logo' src={logo} />
-					<nav>
-						<ul className='nav__ul'>
-							<li className='nav__li'>
-								<NavItem
-									text={"What is Bitrex"}
-									links={WhatIsBitrex}
-									key={0}
-									index={0}
-								/>
-							</li>
-							<li className='nav__li'>
-								<NavItem
-									text={"Our Partners"}
-									links={OurPartners}
-									key={1}
-									index={1}
-								/>
-							</li>
-							<li className='nav__li'>
-								<NavItem
-									text={"Safety Mission"}
-									links={SafetyMission}
-									key={2}
-									index={2}
-								/>
-							</li>
-							<li className='nav__li'>
-								<NavItem
-									text={"Product Information"}
-									links={ProductInformation}
-									key={3}
-									index={3}
-								/>
-							</li>
-						</ul>
-					</nav>
-				</div>
-				<div className='group2'>
-					<a className='nav__flag_container'>
-						<img src={enFlag} alt='English Flag' width={"30px"} />
-						{/* Arrow svg */}
-						<img src={arrow} alt='toggle Arrow' />
-					</a>
+				<a href='#' className='header__logo'>
+					<img className='header__logo_image' src={logo} />
+				</a>
+				<nav className='header__nav'>
+					<ul className='nav__ul'>
+						<li className='nav__li'>
+							<NavItem
+								text={"What is Bitrex"}
+								links={WhatIsBitrex}
+								key={0}
+								index={0}
+							/>
+						</li>
+						<li className='nav__li'>
+							<NavItem
+								text={"Our Partners"}
+								links={OurPartners}
+								key={1}
+								index={1}
+							/>
+						</li>
+						<li className='nav__li'>
+							<NavItem
+								text={"Safety Mission"}
+								links={SafetyMission}
+								key={2}
+								index={2}
+							/>
+						</li>
+						<li className='nav__li'>
+							<NavItem
+								text={"Product Information"}
+								links={ProductInformation}
+								key={3}
+								index={3}
+							/>
+						</li>
+					</ul>
+				</nav>
+				<a className='nav__flag_container'>
+					<img src={enFlag} alt='English Flag' width={"30px"} />
+					{/* Arrow svg */}
+					<img src={arrow} alt='toggle Arrow' />
+				</a>
 
-					<div>
-						<button className='nav__cta'>Contact Us</button>
-					</div>
-					<div className='nav__hamburger_wrapper' onClick={handleHeaderClick}>
-						<span className='nav__hamburger' id='hamburger_icon'></span>
-					</div>
+				<button className='nav__cta'>Contact Us</button>
+
+				<div className='nav__hamburger_wrapper' onClick={handleHeaderClick}>
+					<span className='nav__hamburger' id='hamburger_icon'></span>
 				</div>
 			</div>
 		</HeaderWrapper>
