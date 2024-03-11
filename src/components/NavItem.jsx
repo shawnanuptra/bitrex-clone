@@ -77,6 +77,10 @@ const Wrapper = styled.div`
 			opacity: 0;
 		}
 
+		.dropdown > a {
+			margin: 1.25rem 1.25rem 0;
+			white-space: pre-wrap; /* to wrap text */
+		}
 		.close {
 			position: absolute;
 			display: none;
