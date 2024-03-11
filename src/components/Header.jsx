@@ -157,7 +157,7 @@ const HeaderWrapper = styled.header`
 			top: 6.5rem;
 			width: calc(100vw - 4rem);
 			height: calc(100vh - 6.5rem - 2rem);
-			margin-top: 2rem;
+
 			display: ${({ isHeaderActive }) => (isHeaderActive ? "block" : "none")};
 			overflow-y: scroll;
 		}
@@ -165,6 +165,7 @@ const HeaderWrapper = styled.header`
 			display: flex;
 			flex-direction: column;
 			margin: 0;
+			margin-top: 2rem;
 		}
 
 		.nav__cta {
