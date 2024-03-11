@@ -11,6 +11,8 @@ import {
 	WhatIsBitrex,
 	size,
 } from "../utility/constants";
+import MobileArrow from "./micro-components/MobileArrow";
+import Arrow from "./micro-components/Arrow";
 
 const HeaderWrapper = styled.header`
 	display: grid;
@@ -111,6 +113,10 @@ const HeaderWrapper = styled.header`
 		display: none;
 	}
 
+	.nav__flag_container_mobile {
+		display: none;
+	}
+
 	// MOBILE VIEW
 	@media ${size.headerMobile} {
 		display: grid;
@@ -127,11 +133,13 @@ const HeaderWrapper = styled.header`
 			padding: 1rem 0;
 			align-items: center;
 			justify-content: space-between;
+			flex-flow: wrap;
 		}
 
 		.header__logo {
 			width: 6rem;
 			height: 3rem;
+			margin-right: 2rem;
 		}
 		.header__logo_image {
 			height: auto;
@@ -141,11 +149,22 @@ const HeaderWrapper = styled.header`
 		.nav__li {
 			font-size: 19px;
 			list-style-type: none;
-			margin-right: 1rem;
 		}
 
+		.header__nav {
+			order: 6;
+			position: absolute;
+			top: 6.5rem;
+			width: calc(100vw - 4rem);
+			height: calc(100vh - 6.5rem - 2rem);
+			margin-top: 2rem;
+			display: ${({ isHeaderActive }) => (isHeaderActive ? "block" : "none")};
+			overflow-y: scroll;
+		}
 		.nav__ul {
-			display: none;
+			display: flex;
+			flex-direction: column;
+			margin: 0;
 		}
 
 		.nav__cta {
@@ -166,6 +185,13 @@ const HeaderWrapper = styled.header`
 			display: none;
 		}
 
+		.nav__flag_container_mobile {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-top: 5rem;
+		}
+
 		// HAMBURGER
 
 		.nav__hamburger_wrapper {
@@ -175,7 +201,6 @@ const HeaderWrapper = styled.header`
 			margin-left: 1rem;
 			position: relative;
 			width: 1.5rem;
-			/* border: 1px solid black; */
 		}
 		.nav__hamburger {
 			// create the hamburger
@@ -234,6 +259,20 @@ const HeaderWrapper = styled.header`
 				transform: translateY(-50%) rotate(-45deg);
 				background-color: white;
 			}
+		}
+		.header__background {
+			position: absolute;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #ed1c23;
+			z-index: -1;
+			display: ${({ isHeaderActive }) => (isHeaderActive ? "inline" : "none")};
+		}
+		a {
+			font-size: 26px;
+			font-weight: bold;
+			color: white;
 		}
 	}
 `;
@@ -333,11 +372,16 @@ function Header() {
 							/>
 						</li>
 					</ul>
+					{/* fllag container mobile */}
+					<a className='nav__flag_container_mobile'>
+						<img src={enFlag} alt='English Flag' width={"30px"} />
+						<span>English</span>
+						<MobileArrow />
+					</a>
 				</nav>
 				<a className='nav__flag_container'>
-					<img src={enFlag} alt='English Flag' width={"30px"} />
-					{/* Arrow svg */}
-					<img src={arrow} alt='toggle Arrow' />
+					{/* <img src={enFlag} alt='English Flag' width={"30px"} /> */}
+					<Arrow />
 				</a>
 
 				<button className='nav__cta'>Contact Us</button>
@@ -346,6 +390,7 @@ function Header() {
 					<span className='nav__hamburger' id='hamburger_icon'></span>
 				</div>
 			</div>
+			<div className='header__background'></div>
 		</HeaderWrapper>
 	);
 }

@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import Arrow from "./micro-components/Arrow";
 import styled from "styled-components";
+import { size } from "../utility/constants";
+import MobileArrow from "./micro-components/MobileArrow";
 
 const Wrapper = styled.div`
 	margin-right: 1rem;
@@ -53,6 +55,56 @@ const Wrapper = styled.div`
 	.rotate {
 		transform: rotate(180deg);
 	}
+
+	.desktop-arrow {
+		display: flex;
+	}
+
+	.mobile-arrow {
+		display: none;
+	}
+
+	@media ${size.headerMobile} {
+		.dropdown {
+			position: absolute;
+			top: 2.5rem;
+			z-index: 300;
+			border-radius: 1rem;
+			overflow: visible;
+			background-color: transparent;
+			width: auto;
+			transition: 0.1s ease;
+			opacity: 0;
+		}
+
+		.close {
+			position: absolute;
+			display: none;
+		}
+		.open {
+			opacity: 1;
+			display: block;
+			position: static;
+		}
+
+		a {
+			font-size: 24px;
+			font-weight: bold;
+			color: white;
+		}
+
+		.desktop-arrow {
+			display: none;
+		}
+
+		.mobile-arrow {
+			display: flex;
+		}
+
+		.main-link {
+			margin: 0.2rem 0;
+		}
+	}
 `;
 
 function NavItem({ text, links, index }) {
@@ -91,15 +143,23 @@ function NavItem({ text, links, index }) {
 				setNavState(!navState);
 			}}
 		>
-			<a href='#' key={index}>
+			<a href='#' key={index} className='main-link'>
 				{text}
 				<div className={`rotatable ${navState ? "rotate" : ""}`}>
-					<Arrow />
+					<div className='desktop-arrow'>
+						<Arrow />
+					</div>
+					<div className='mobile-arrow'>
+						<MobileArrow />
+					</div>
 				</div>
 			</a>
 
 			{/* DROPDOWN */}
-			<div className={`dropdown ${navState ? "open" : ""}`} ref={dropdownRef}>
+			<div
+				className={`dropdown ${navState ? "open" : "close"}`}
+				ref={dropdownRef}
+			>
 				{
 					// Dynamically produce links
 					Object.entries(links).map(([title, link]) => (
