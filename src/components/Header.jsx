@@ -119,6 +119,7 @@ const HeaderWrapper = styled.header`
 		grid-template-columns: 0 2rem 2rem minmax(0, 1fr) 2rem 2rem 0;
 		background-color: ${({ isHeaderActive }) =>
 			isHeaderActive ? "#ed1c23" : "white"};
+		height: 6.5rem;
 
 		.header__inner {
 			display: flex;
@@ -130,7 +131,11 @@ const HeaderWrapper = styled.header`
 
 		.header__logo {
 			width: 6rem;
-			/* order: 0; */
+			height: 3rem;
+		}
+		.header__logo_image {
+			height: auto;
+			width: 5rem;
 		}
 
 		.nav__li {
@@ -164,9 +169,10 @@ const HeaderWrapper = styled.header`
 		// HAMBURGER
 
 		.nav__hamburger_wrapper {
+			order: 4;
 			cursor: pointer;
 			height: 2rem;
-			/* margin-left: 1rem; */
+			margin-left: 1rem;
 			position: relative;
 			width: 1.5rem;
 			/* border: 1px solid black; */
