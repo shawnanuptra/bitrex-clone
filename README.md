@@ -1,8 +1,7 @@
-# React + Vite
+# Bitrex Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cloned mobile-responsive webpage of Bitrex Taste Test. This project is purely used for practising.
+Learned a lot about CSS-grid and SASS.
+Credits to Primate for creating an amazing website for inspiration!
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://www.bitrex.com/the-bitrex-taste-test/
