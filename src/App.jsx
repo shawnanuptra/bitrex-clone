@@ -5,6 +5,7 @@ import HeroImage from "./assets/Try-It-1536x1024.jpg";
 import TasteTestImage from "./assets/Taste-Test-Static.png";
 import RequestTasteTestBtn from "./components/RequestTasteTestBtn";
 import Footer from "./components/Footer";
+import { size } from "./utility/constants";
 
 const HeroSection = styled.div`
 	width: 100%;
@@ -83,6 +84,54 @@ const HeroSection = styled.div`
 		color: red;
 		background-color: transparent;
 	}
+
+	@media ${size.headerMobile} {
+		display: grid;
+		grid-auto-flow: row;
+		grid-auto-rows: auto;
+		grid-template-columns: 0 2rem 2rem minmax(0, 1fr) 2rem 2rem 0;
+		background-color: #fdf2f2;
+		height: auto;
+		width: 100%;
+
+		.hero__content {
+			grid-column: 3/6;
+			display: flex;
+			flex-direction: column;
+			padding: 4rem 0;
+			justify-content: center;
+
+			h1 {
+				width: 100%;
+				max-width: 10ch;
+				font-size: 48px;
+			}
+
+			p {
+				width: 100%;
+				font-size: 21px;
+			}
+
+			.hero__cta_wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.hero__cta {
+				width: 100%;
+				text-align: center;
+			}
+		}
+
+		.hero__media {
+			grid-column: 3/6;
+			width: 100%;
+			justify-self: auto;
+			grid-row: auto;
+			aspect-ratio: unset;
+		}
+	}
 `;
 const TasteTestSection = styled.div`
 	background-color: white;
@@ -105,17 +154,18 @@ const TasteTestSection = styled.div`
 		/* grid-row: 1/2; */
 		width: 100%;
 		margin: 128px 0;
+		align-items: center;
 	}
 
 	.tastetest__left_inner {
-		width: 100%;
+		/* width: 100%; */
 		aspect-ratio: 1/1;
-		height: 100%;
+		display: flex;
+		height: max-content;
 	}
 
 	.tastetest_left_inner_img {
 		display: block;
-		height: 100%;
 		width: 100%;
 		margin: 0;
 		object-fit: cover;
@@ -174,12 +224,56 @@ const TasteTestSection = styled.div`
 			margin: 2rem 0;
 		}
 	}
+
+	@media only screen and (min-width: 1124px) and (max-width: 1400px) {
+		.tastetest__left {
+			padding: 2rem 0;
+		}
+		.tastetest__right {
+			padding: 2rem 0;
+		}
+	}
+
+	@media ${size.headerMobile} {
+		display: grid;
+		grid-auto-flow: row;
+		grid-auto-rows: auto;
+		grid-template-columns: 0 2rem 2rem minmax(0, 1fr) 2rem 2rem 0;
+		/* background-color: #fdf2f2; */
+		height: auto;
+		width: 100%;
+
+		.wrapper {
+			grid-column: 3/6;
+			display: grid;
+			font-weight: 500;
+		}
+
+		.tastetest__right {
+			grid-row: 2/3;
+			padding-top: 64px;
+		}
+		.tastetest__right_content {
+			width: 100%;
+			display: flex;
+			justify-content: start;
+			flex: 0 1 auto;
+			flex-direction: column;
+			padding: 0 3rem;
+		}
+
+		.tastetest__left {
+			display: flex;
+			width: 100%;
+			margin: 0;
+		}
+	}
 `;
 function App() {
 	return (
 		<>
 			<Header />
-			{/* <main>
+			<main>
 				<HeroSection>
 					<div className='hero__content'>
 						<h1>
@@ -252,7 +346,7 @@ function App() {
 					</div>
 				</TasteTestSection>
 			</main>
-			<Footer /> */}
+			<Footer />
 		</>
 	);
 }

@@ -3,6 +3,7 @@ import VeranovaLogo from "../assets/veranova-2-22.webp";
 import styled from "styled-components";
 import TwitterIcon from "./micro-components/TwitterIcon";
 import FacebookIcon from "./micro-components/FacebookIcon";
+import { size } from "../utility/constants";
 
 const Wrapper = styled.div`
 	display: grid;
@@ -87,6 +88,31 @@ const Wrapper = styled.div`
 					cursor: pointer;
 					text-shadow: 0 0 32px #fff;
 				}
+			}
+		}
+	}
+
+	@media ${size.headerMobile} {
+		display: grid;
+		grid-template-columns: 0 2rem 2rem minmax(0, 1fr) 2rem 2rem 0;
+		background-color: black;
+		color: white;
+
+		.footer_main {
+			flex-direction: column-reverse;
+		}
+
+		.footer_col {
+			margin-top: 2rem;
+		}
+
+		.footer_col > img {
+			width: 65%;
+		}
+
+		.footer_bottom {
+			.footer_bottom__text {
+				flex-direction: column;
 			}
 		}
 	}
