@@ -381,7 +381,7 @@ function Header() {
 					</a>
 				</nav>
 				<a className='nav__flag_container'>
-					{/* <img src={enFlag} alt='English Flag' width={"30px"} /> */}
+					<img src={enFlag} alt='English Flag' width={"30px"} />
 					<Arrow />
 				</a>
 
